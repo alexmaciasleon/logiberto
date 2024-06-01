@@ -18,7 +18,6 @@ openJDK version 17
 
 - [Maven 3]
 Apache Maven 3 (for building)
-We user maven version
 
 MariaDB 
 You need a running instance of local instante of MariaDB as the SQL server.
