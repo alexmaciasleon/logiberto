@@ -12,7 +12,7 @@ cd logiberto
 
 ## Prerequisistes
 
-[Java 1.7]
+[Java 17]
 Java (for building and runnning)
 openJDK version 17
 
