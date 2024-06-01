@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.StringTokenizer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -93,17 +93,29 @@ public class App {
         return newLines;
     }
     
+    
+    /*
+    Regex Desglosado:
+    - (\\d+\\.\\d+\\.\\d+\\.\\d+): Captura la dirección IP.
+    - \\|(.*?)\\|: Captura la marca de tiempo entre los caracteres |.
+    - (\\w+): Captura el método HTTP (por ejemplo, GET).
+    - \\|(\\d+)\\|: Captura el código de estado HTTP.
+    - (.*?)\\|: Captura el recurso solicitado.
+    - (.*?): Captura el agente de usuario.
+    */
+    
     private static void insertLogEntry(String logEntry) {
-        String regex = "(\\d+\\.\\d+\\.\\d+\\.\\d+) - - \\[(.*?)\\]  (\\d+) \"(\\w+) (.*?) HTTP/\\d\\.\\d\" \\d+ \"-\" \"(.*?)\" \"-\"";
-        Pattern pattern = Pattern.compile(regex);
+    	
+    	String regex = "(\\d+\\.\\d+\\.\\d+\\.\\d+)\\|(.*?)\\|(\\w+)\\|(\\d+)\\|(.*?)\\|(.*?)";
+    	Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(logEntry);
-
+        
         if (matcher.matches()) {
-            String ipAddress = matcher.group(1);
-            String timestampStr = matcher.group(2);
-            int statusCode = Integer.parseInt(matcher.group(3));
-            String httpMethod = matcher.group(4);
-            String requestUri = matcher.group(5);
+        	String ip = matcher.group(1);
+            String timestamp = matcher.group(2);
+            String method = matcher.group(3);
+            String statusCode = matcher.group(4);
+            String resource = matcher.group(5);
             String userAgent = matcher.group(6);
             
             // Parse log Date
@@ -111,7 +123,7 @@ public class App {
          
             Date datetime = null;
             try {
-            	datetime = sdf.parse(timestampStr);
+            	datetime = sdf.parse(timestamp);
             } catch(ParseException e) {
             	System.err.println("Ocurrio un error al parsear la fecha" + e);
             }
@@ -122,11 +134,11 @@ public class App {
             String sql = DB_SQL_INSERT_LOG_LINE;
             try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, ipAddress);
+                pstmt.setString(1, ip);
                 pstmt.setString(2, dbFormattedString);
-                pstmt.setInt(3, statusCode);
-                pstmt.setString(4, httpMethod);
-                pstmt.setString(5, requestUri);
+                pstmt.setString(3, statusCode);
+                pstmt.setString(4, method);
+                pstmt.setString(5, resource);
                 pstmt.setString(6, userAgent);
                 pstmt.executeUpdate();
             } catch (SQLException e) {
