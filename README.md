@@ -1,6 +1,6 @@
 # Logiberto
 
-Logiberto syncs yours access logs to an SQL database.
+Logiberto syncs your access logs to an SQL database.
 
 ![Alt Perfectly structured access data](https://github.com/alexmaciasleon/logiberto/blob/main/logiberto-screenshot.png?raw=true)
 
