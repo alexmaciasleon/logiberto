@@ -17,7 +17,7 @@ You need a running instance of local instante of MariaDB as the SQL server.
 mysql 15.1 Distrib 10.6.17-MariaDB
 
 To deploy the structure of the database run:
-mysql -u user1 -p logiberto < logibertoDDL.sql
+mysql -u user1 -p logiberto < logiberto-ddl.sql
 
 The porject uses a maven 3 as a buld tool, so it file directory structure is one of a maven project.
 
