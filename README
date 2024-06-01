@@ -2,14 +2,25 @@
 
 Logiberto syncs yours access logs to an SQL database.
 
-## Requisitos
+## Prerequisistes 
+
+The project has been developed using java version 17.
 
 - [Java 17+]
+
+The porject uses a maven 3 as a buld tool, so it file directory structure is one of a maven project.
 - [Maven 3.6+]
 
-## Instalación
+## Build the project
 
-### Clonar el repositorio
+mvn clean package
+
+## Run the logiberto daemon
+
+cd target
+java -jar Logiberto-0.0.1.jar
+
+### Clone the repository
 
 ```bash
 git clone https://github.com/alexmaciasleon/logiberto.git
