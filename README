@@ -2,14 +2,24 @@
 
 Logiberto syncs yours access logs to an SQL database.
 
-## Prerequisistes 
+## Prerequisistes
 
-The project has been developed using java version 17.
+[Java 1.7]
+Java (for building and runnning)
+openJDK version 17
 
-- [Java 17+]
+- [Maven 3]
+Apache Maven 3 (for building)
+We user maven version
+
+MariaDB 
+You need a running instance of local instante of MariaDB as the SQL server.
+mysql 15.1 Distrib 10.6.17-MariaDB
+
+To deploy the structure of the database run:
+mysql -u user1 -p logiberto < logibertoDDL.sql
 
 The porject uses a maven 3 as a buld tool, so it file directory structure is one of a maven project.
-- [Maven 3.6+]
 
 ## Build the project
 
