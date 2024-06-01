@@ -2,6 +2,14 @@
 
 Logiberto syncs yours access logs to an SQL database.
 
+![Perfectly structured access data](https://github.com/alexmaciasleon/logiberto/blob/main/logiberto-screenshot.png?raw=true)
+
+### Clone the repository
+
+```bash
+git clone https://github.com/alexmaciasleon/logiberto.git
+cd logiberto
+
 ## Prerequisistes
 
 [Java 1.7]
@@ -30,8 +38,4 @@ mvn clean package
 cd target
 java -jar Logiberto-0.0.1.jar
 
-### Clone the repository
 
-```bash
-git clone https://github.com/alexmaciasleon/logiberto.git
-cd logiberto
