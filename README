@@ -5,6 +5,10 @@ Logiberto syncs yours access logs to an SQL database.
 ## Prerequisistes 
 
 The project has been developed using java version 17.
+You need a MariaDB instance.
+
+To deploy the structure of the database run:
+mysql -u user1 -p logiberto < logibertoDDL.sql
 
 - [Java 17+]
 
