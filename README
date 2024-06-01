@@ -1,0 +1,16 @@
+# Logiberto
+
+Logiberto syncs yours access logs to an SQL database.
+
+## Requisitos
+
+- [Java 17+]
+- [Maven 3.6+]
+
+## Instalación
+
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/alexmaciasleon/logiberto.git
+cd logiberto
