@@ -21,7 +21,8 @@ Apache Maven 3 (for building)
 
 MariaDB 
 By default logiberto works with MariaDB but can be easily replaced by any other relational database that has JDBC support.
-mysql 15.1 Distrib 10.6.17-MariaDB
+
+10.6.17-MariaDB
 
 To deploy the structure of the database run:
 mysql -u user1 -p logiberto < logiberto-ddl.sql
