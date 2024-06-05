@@ -20,7 +20,7 @@ openJDK version 17
 Apache Maven 3 (for building)
 
 MariaDB 
-You need a running instance of local instante of MariaDB as the SQL server.
+By default logiberto works with MariaDB but can be easily replaced by any other relational database that has JDBC support.
 mysql 15.1 Distrib 10.6.17-MariaDB
 
 To deploy the structure of the database run:
