@@ -12,13 +12,13 @@ cd logiberto
 ```
 ## Prerequisistes
 
-- [Java 17] (for building and runnning)
+- [Java] (for building and runnning)
 recommended version: openJDK version 17
 
-- [Maven 3]
+- [Maven]
 Apache Maven 3 (for building)
 
-- [MariaDB 10]
+- [MariaDB]
 By default logiberto works with MariaDB but can be easily replaced by any other relational database that has JDBC support.
 
 To deploy the structure of the database run:
