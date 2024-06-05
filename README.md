@@ -59,6 +59,6 @@ cp logibertod.service /etc/systemd/system/
 
 sudo systemctl enable logibertod
 
-## Start logiberto daemeon (linux only)
+## Start logiberto daemon (linux only)
 
 sudo systemctl start logibertod
