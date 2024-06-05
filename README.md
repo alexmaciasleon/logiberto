@@ -9,7 +9,7 @@ Logiberto syncs your access logs to an SQL database.
 ```bash
 git clone https://github.com/alexmaciasleon/logiberto.git
 cd logiberto
-`
+```
 ## Prerequisistes
 
 [Java 17]
