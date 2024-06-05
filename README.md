@@ -34,9 +34,11 @@ mvn clean package
 
 ## Run the logiberto daemon
 
+```bash
 cd target
 java -jar Logiberto-0.0.1.jar
 
+```
 
 ## Startup bash script
 
