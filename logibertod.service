@@ -1,0 +1,13 @@
+[Unit]
+Description=Logiberto Daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/home/alex/startLogiberto.sh
+User=alex
+Group=alex
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
