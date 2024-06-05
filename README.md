@@ -1,6 +1,6 @@
 # Logiberto
 
-Logiberto syncs yours access logs to an SQL database.
+Logiberto syncs your access logs to an SQL database.
 
 ![Alt Perfectly structured access data](https://github.com/alexmaciasleon/logiberto/blob/main/logiberto-screenshot.png?raw=true)
 
@@ -12,13 +12,12 @@ cd logiberto
 
 ## Prerequisistes
 
-[Java 1.7]
+[Java 17]
 Java (for building and runnning)
 openJDK version 17
 
 - [Maven 3]
 Apache Maven 3 (for building)
-We user maven version
 
 MariaDB 
 You need a running instance of local instante of MariaDB as the SQL server.
