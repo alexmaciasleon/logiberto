@@ -29,15 +29,14 @@ mysql -u user1 -p logiberto < logiberto-ddl.sql
 The project uses Maven 3 as a build tool, so it file directory structure is one of a maven project.
 
 ## Build the project
-
+```bash
 mvn clean package
-
+```
 ## Run the logiberto daemon
 
 ```bash
 cd target
 java -jar Logiberto-0.0.1.jar
-
 ```
 
 ## Startup bash script
