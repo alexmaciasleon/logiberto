@@ -53,13 +53,14 @@ We have provided a systemd, just adapt the path to your particular case
 
 
 set your path in logiberto.service then copy:
-
+```bash
 cp logibertod.service /etc/systemd/system/
-
+```
 ## Enable the logiberto daemon with systemd (linux only)
-
+```bash
 sudo systemctl enable logibertod
-
+```
 ## Start logiberto daemon (linux only)
-
+```bash
 sudo systemctl start logibertod
+```
