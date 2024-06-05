@@ -1,4 +1,4 @@
-# Logiberto
+#Logiberto
 
 Logiberto syncs your access logs to an SQL database.
 
@@ -10,7 +10,7 @@ Logiberto syncs your access logs to an SQL database.
 git clone https://github.com/alexmaciasleon/logiberto.git
 cd logiberto
 
-## Prerequisistes
+##Prerequisistes
 
 [Java 17]
 Java (for building and runnning)
@@ -28,13 +28,37 @@ mysql -u user1 -p logiberto < logiberto-ddl.sql
 
 The porject uses a maven 3 as a buld tool, so it file directory structure is one of a maven project.
 
-## Build the project
+##Build the project
 
 mvn clean package
 
-## Run the logiberto daemon
+##Run the logiberto daemon
 
 cd target
 java -jar Logiberto-0.0.1.jar
 
 
+#Startup bash script
+
+startLogibertod.sh file provided.
+
+Edit the file and set your particular file paths.
+
+
+#Add Logiberto daemon to systemd (linux only)
+
+
+We have provided a systemd, just adapt the path to your particular case
+
+
+set your path in logiberto.service then copy:
+
+cp logibertod.service /etc/systemd/system/
+
+#Enable the logiberto daemon with systemd (linux only)
+
+sudo systemctl enable logibertod
+
+# Start logiberto dameon (linux only)
+
+sudo systemctl start logibertod
