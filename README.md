@@ -22,9 +22,11 @@ Apache Maven 3 (for building)
 By default logiberto works with MariaDB but can be easily replaced by any other relational database that has JDBC support.
 
 To deploy the structure of the database run:
+```bash
 mysql -u user1 -p logiberto < logiberto-ddl.sql
+```
 
-The porject uses a maven 3 as a buld tool, so it file directory structure is one of a maven project.
+The project uses Maven 3 as a build tool, so it file directory structure is one of a maven project.
 
 ## Build the project
 
