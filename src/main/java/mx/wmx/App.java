@@ -23,8 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class App {
-	
-	//Log file setting
+    //Log file settings
     private static final String LOG_FILE_PATH = "/var/log/nginx/access.log";
     private static final String LOG_DATE_FORMAT = "dd/MMM/yyyy:HH:mm:ss Z";
     
