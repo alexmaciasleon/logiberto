@@ -10,7 +10,7 @@ import java.nio.channels.SeekableByteChannel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Date;
@@ -23,7 +23,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class App {
-    //Log file settings
+    
+	//Log file settings
     private static final String LOG_FILE_PATH = "/var/log/nginx/access.log";
     private static final String LOG_DATE_FORMAT = "dd/MMM/yyyy:HH:mm:ss Z";
     
@@ -40,32 +41,47 @@ public class App {
     
     //Text file pointer
     private static long lastFilePosition = 0;
-
-    public static void main(String[] args) {
-        try {
-            WatchService watchService = FileSystems.getDefault().newWatchService();
-            Path logDir = Paths.get(LOG_FILE_PATH).getParent();
-            logDir.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
-            while (true) {
-                WatchKey key = watchService.take();
-                for (WatchEvent<?> event : key.pollEvents()) {
-                	WatchEvent.Kind<?> kind = event.kind();
-                    if (kind == StandardWatchEventKinds.ENTRY_MODIFY) {
-                        Path changed = (Path) event.context();
-                        if (true) {
-                            List<String> newLines = readNewLogLines();
-                            for (String line : newLines) {
-                            	insertLogEntry(line);
-                            }
-                        }
-                    }
-                }
-                key.reset();
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+    
+    private static WatchService watchService;
+    private static Path logDir;
+    private static int dayOfMonth;
+       
+    public static void init() {
+    	try {
+    		watchService = FileSystems.getDefault().newWatchService();
+    		logDir = Paths.get(LOG_FILE_PATH).getParent();
+    		logDir.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     }
+
+	public static void main(String[] args) {
+		dayOfMonth = LocalDate.now().getDayOfMonth();
+
+		try {
+			while (true) {
+				if (dayOfMonth != LocalDate.now().getDayOfMonth())
+					init();
+				WatchKey key = watchService.take();
+				for (WatchEvent<?> event : key.pollEvents()) {
+					WatchEvent.Kind<?> kind = event.kind();
+					if (kind == StandardWatchEventKinds.ENTRY_MODIFY) {
+						Path changed = (Path) event.context();
+						if (true) {
+							List<String> newLines = readNewLogLines();
+							for (String line : newLines) {
+								insertLogEntry(line);
+							}
+						}
+					}
+				}
+				key.reset();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
     private static List<String> readNewLogLines() throws IOException {	
         Path logFilePath = Paths.get(LOG_FILE_PATH);
@@ -91,7 +107,6 @@ public class App {
         }
         return newLines;
     }
-    
     
     /*
     Regex Desglosado:
