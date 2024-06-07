@@ -1,6 +1,6 @@
 # Logiberto
 
-Logiberto monitors, parses and syncs your access log files to an relational database so you can query the log data with SQL.
+Logiberto monitors, parses and syncs your access log files into a relational database so you can query your log data with SQL.
 
 ![Alt Perfectly structured access data](https://github.com/alexmaciasleon/logiberto/blob/main/logiberto-screenshot.png?raw=true)
 
