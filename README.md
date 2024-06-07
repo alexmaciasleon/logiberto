@@ -9,34 +9,35 @@ Logiberto syncs your access logs to an SQL database.
 ```bash
 git clone https://github.com/alexmaciasleon/logiberto.git
 cd logiberto
-
+```
 ## Prerequisistes
 
-[Java 17]
-Java (for building and runnning)
-openJDK version 17
+- [Java] (for building and runnning)
+recommended version: openJDK version 17
 
-- [Maven 3]
+- [Maven]
 Apache Maven 3 (for building)
 
-MariaDB 
+- [MariaDB]
 By default logiberto works with MariaDB but can be easily replaced by any other relational database that has JDBC support.
-mysql 15.1 Distrib 10.6.17-MariaDB
 
 To deploy the structure of the database run:
+```bash
 mysql -u user1 -p logiberto < logiberto-ddl.sql
+```
 
-The porject uses a maven 3 as a buld tool, so it file directory structure is one of a maven project.
+The project uses Maven 3 as a build tool, so it file directory structure is one of a maven project.
 
 ## Build the project
-
+```bash
 mvn clean package
-
+```
 ## Run the logiberto daemon
 
+```bash
 cd target
 java -jar Logiberto-0.0.1.jar
-
+```
 
 ## Startup bash script
 
@@ -52,13 +53,14 @@ We have provided a systemd, just adapt the path to your particular case
 
 
 set your path in logiberto.service then copy:
-
+```bash
 cp logibertod.service /etc/systemd/system/
-
+```
 ## Enable the logiberto daemon with systemd (linux only)
-
+```bash
 sudo systemctl enable logibertod
-
-## Start logiberto dameon (linux only)
-
+```
+## Start logiberto daemon (linux only)
+```bash
 sudo systemctl start logibertod
+```
