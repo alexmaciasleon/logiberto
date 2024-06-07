@@ -1,4 +1,4 @@
-package mx.wmx;
+package mx.wmx.monitor;
 
 import java.io.IOException;
 
@@ -16,14 +16,13 @@ import java.util.regex.Pattern;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class App {
+public class Logibertod {
     
 	//Log file settings
     private static final String LOG_FILE_PATH = "/var/log/nginx/access.log";
