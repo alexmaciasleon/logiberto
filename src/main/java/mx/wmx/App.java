@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.concurrent.TimeUnit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -47,6 +48,7 @@ public class App {
     private static int dayOfMonth;
        
     public static void init() {
+        dayOfMonth = LocalDate.now().getDayOfMonth();
     	try {
     		watchService = FileSystems.getDefault().newWatchService();
     		logDir = Paths.get(LOG_FILE_PATH).getParent();
@@ -57,12 +59,17 @@ public class App {
     }
 
 	public static void main(String[] args) {
-		dayOfMonth = LocalDate.now().getDayOfMonth();
-
+		
+		init();
+		
 		try {
 			while (true) {
+				
 				if (dayOfMonth != LocalDate.now().getDayOfMonth())
+				{
+					TimeUnit.MINUTES.sleep(5);
 					init();
+				}
 				WatchKey key = watchService.take();
 				for (WatchEvent<?> event : key.pollEvents()) {
 					WatchEvent.Kind<?> kind = event.kind();
